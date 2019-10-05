@@ -1,13 +1,49 @@
 import React from "react";
 import Helmet from "react-helmet";
+import Prism from "prismjs";
+
+import 'prismjs/themes/prism.css';
+import 'prismjs/components/prism-rust';
 
 import Layout from "../components/layout";
 
 import arch from "../assets/images/bastion-arch.png";
 
 class Homepage extends React.Component {
+  componentDidMount() {
+    Prism.highlightAll();
+  }
+
   render() {
     const siteTitle = "Bastion";
+    const code_example = `use bastion::prelude::*;
+
+fn main() {
+    Bastion::platform();
+
+    // Define, calculate or prepare messages to be sent to the processes. 
+    let message = String::from("Some message to be passed");
+
+    Bastion::spawn(
+        |context: BastionContext, msg: Box<dyn Message>| {
+            // Message can be selected with receiver here. Take action!
+            receive! { msg,
+                String => |e| { println!("Received string :: {}", e)},
+                i32 => |e| {println!("Received i32 :: {}", e)},
+                _ => println!("No message as expected. Default")
+            }
+
+            // Do some processing in body
+            println!("root supervisor - spawn_at_root - 1");
+
+            // Rebind to the system
+            context.hook();
+        },
+        message,
+    );
+
+    Bastion::start()
+}`;
 
     return (
       <Layout>
@@ -78,10 +114,20 @@ class Homepage extends React.Component {
         </section>
 
         <section id="three" className="main style1 special">
-          <div className="container">
-            <header className="major">
-              <h2>Example</h2>
-            </header>
+          <div className="grid-wrapper">
+            <div className="col-12">
+              <header className="major">
+                <h2>Example</h2>
+              </header>
+            </div>
+            <div className="col-12">
+              <p>In most simple way you can use Bastion like here:</p>
+            </div>
+            <div className="col-12">
+              <pre className="language-rust">
+                <code className="language-rust">{code_example}</code>
+              </pre>
+            </div>
           </div>
         </section>
 
