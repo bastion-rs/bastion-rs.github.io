@@ -176,10 +176,15 @@ class Homepage extends React.Component {
               </h2>
             </header>
             <p>
-              Take a look at the examples, get involved in project, read the
-              documentation
+              Read the documentation, take a look at the examples, get involved
+              in project
             </p>
             <ul className="actions uniform">
+              <li>
+                <a href="https://docs.rs/bastion" className="button">
+                  Docs
+                </a>
+              </li>
               <li>
                 <a
                   href="https://github.com/bastion-rs/bastion/tree/master/examples"
