@@ -194,7 +194,7 @@ class Homepage extends React.Component {
                 </a>
               </li>
               <li>
-                <a href="https://discord.gg/UUVsusb" className="button">
+                <a href="https://discord.gg/DqRqtRT" className="button">
                   Join our Discord
                 </a>
               </li>
