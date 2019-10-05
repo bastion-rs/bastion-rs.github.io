@@ -17,9 +17,6 @@ class Footer extends React.Component {
         <ul className="copyright">
           <li>&copy; Bastion Project Developers</li>
           <li>
-            Adapted by: <a href="http://vertexclique.com">vertexclique</a>
-          </li>
-          <li>
             Design: <a href="http://html5up.net">HTML5 UP</a>
           </li>
         </ul>
