@@ -176,8 +176,8 @@ class Homepage extends React.Component {
               </h2>
             </header>
             <p>
-              Take a look at the examples, get involved in project, read the
-              documentation
+              Read the documentation, take a look at the examples, get involved
+              in project
             </p>
             <ul className="actions uniform">
               <li>
