@@ -2,8 +2,8 @@ import React from "react";
 import Helmet from "react-helmet";
 import Prism from "prismjs";
 
-import 'prismjs/themes/prism.css';
-import 'prismjs/components/prism-rust';
+import "prismjs/themes/prism.css";
+import "prismjs/components/prism-rust";
 
 import Layout from "../components/layout";
 
@@ -16,7 +16,11 @@ class Homepage extends React.Component {
 
   render() {
     const siteTitle = "Bastion";
-    const code_example = `use bastion::prelude::*;
+    const fort_example = `#[fort::root]
+fn main() {
+    println!("Running in Bastion runtime!");
+}`;
+    const bastion_example = `use bastion::prelude::*;
 
 fn main() {
     Bastion::platform();
@@ -117,15 +121,27 @@ fn main() {
           <div className="grid-wrapper">
             <div className="col-12">
               <header className="major">
-                <h2>Example</h2>
+                <h2>Examples</h2>
               </header>
             </div>
             <div className="col-12">
-              <p>In most simple way you can use Bastion like here:</p>
+              <h4>
+                In a short way, you can use{" "}
+                <a href="https://github.com/bastion-rs/fort">fort</a> the
+                proc-macro for Bastion:
+              </h4>
             </div>
             <div className="col-12">
               <pre className="language-rust">
-                <code className="language-rust">{code_example}</code>
+                <code className="language-rust">{fort_example}</code>
+              </pre>
+            </div>
+            <div className="col-12">
+              <h4>Or, you can configure every piece by yourself:</h4>
+            </div>
+            <div className="col-12">
+              <pre className="language-rust">
+                <code className="language-rust">{bastion_example}</code>
               </pre>
             </div>
           </div>
