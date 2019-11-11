@@ -21,33 +21,71 @@ fn main() {
     println!("Running in Bastion runtime!");
 }`;
     const bastion_example = `use bastion::prelude::*;
+use std::sync::atomic::{AtomicBool, Ordering};
+use std::sync::Arc;
 
 fn main() {
-    Bastion::platform();
+    Bastion::init();
 
-    // Define, calculate or prepare messages to be sent to the processes. 
-    let message = String::from("Some message to be passed");
+    let started = AtomicBool::new(false);
+    let started = Arc::new(started);
 
-    Bastion::spawn(
-        |context: BastionContext, msg: Box<dyn Message>| {
-            // Message can be selected with receiver here. Take action!
-            receive! { msg,
-                String => |e| { println!("Received string :: {}", e)},
-                i32 => |e| {println!("Received i32 :: {}", e)},
-                _ => println!("No message as expected. Default")
+    Bastion::children(|children| {
+        children.with_exec(move |ctx: BastionContext| {
+            let started = started.clone();
+            async move {
+                println!("Started!");
+
+                if started.swap(true, Ordering::SeqCst) {
+                    println!("Already started once. Stopping...");
+
+                    // This will ask the system to stop itself...
+                    Bastion::stop();
+                    // ...and this will stop this child immediately...
+                    return Ok(());
+                    // Note that if Err(()) was returned, the child would have been
+                    // restarted (and if the system wasn't stopping).
+                }
+
+                // This will return None.
+                let try_recv = ctx.try_recv().await;
+                println!("try_recv.is_some() == {}", try_recv.is_some()); // false
+
+                let answer = ctx
+                    .current()
+                    .ask("Hello World!")
+                    .expect("Couldn't send the message.");
+
+                msg! { ctx.recv().await?,
+                    msg: &'static str =!> {
+                        println!(r#"msg == "Hello World!" => {}"#, msg == "Hello World!"); // true
+                        let _ = answer!("Goodbye!");
+                    };
+                    // This won't happen because this example
+                    // only "asks" a &'static str...
+                    _: _ => ();
+                }
+
+                msg! { answer.await?,
+                    msg: &'static str => {
+                        println!(r#"msg == "Goodbye!" => {}"#, msg == "Goodbye!"); // true
+                    };
+                    // This won't happen because this example
+                    // only answers a &'static str...
+                    _: _ => ();
+                }
+
+                // Panicking will restart the children group.
+                panic!("Oh no!");
             }
+        })
+    })
+    .expect("Couldn't start a new children group.");
 
-            // Do some processing in body
-            println!("root supervisor - spawn_at_root - 1");
-
-            // Rebind to the system
-            context.hook();
-        },
-        message,
-    );
-
-    Bastion::start()
-}`;
+    Bastion::start();
+    Bastion::block_until_stopped();
+}
+`;
 
     return (
       <Layout>
@@ -57,20 +95,20 @@ fn main() {
           <div className="grid-wrapper">
             <div className="col-6">
               <header className="major">
-                <h2>Runtime Summary</h2>
+                <h2>What is Bastion?</h2>
               </header>
               <p>
-                Bastion is a fault-tolerant runtime which is designed for
-                recovering from faults based on the supervision strategies that
-                you've passed. <br />
-                It is designed to provide persistent runtime for applications
-                which need to be highly-available.
+                Bastion is a highly-available, fault-tolerant runtime system with
+                dynamic dispatch oriented lightweight process model.
+                It supplies actor model like concurrency with lightweight process
+                implementation and utilize all the system resources efficiently
+                with giving promise of at-most-once message delivery guarantee.
               </p>
               <ul>
-                <li>Message-based communication</li>
-                <li>Runtime fault-tolerance</li>
-                <li>Supervision strategies</li>
-                <li>Process lifecycles</li>
+                <li>Message-based communication makes this project a lean mesh of actor system.</li>
+                <li>Runtime fault-tolerance makes it a good candidate for distributed systems.</li>
+                <li>Completely asynchronous runtime with NUMA-aware and cache-affine SMP executor.</li>
+                <li>Supervision system makes it easy to manage lifecycles.</li>
               </ul>
             </div>
             <div className="col-6">

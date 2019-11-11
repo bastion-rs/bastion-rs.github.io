@@ -13,13 +13,11 @@ class Header extends React.Component {
           <h1>
             <strong>Bastion</strong>
             <br />
-            Fault-tolerant runtime for Rust applications
+            Highly-available Distributed Fault-tolerant Runtime
           </h1>
           <p>
-            Bastion is a fault-tolerant runtime designed to
-            <br />
-            recover from faults and provides persistent, available, async
-            runtime.
+            Bastion is a highly-available, fault-tolerant runtime system
+            with dynamic dispatch oriented lightweight process model.
           </p>
           <ul className="actions">
             <li>
