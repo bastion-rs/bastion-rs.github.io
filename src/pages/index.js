@@ -111,11 +111,13 @@ fn main() {
                 <li>Supervision system makes it easy to manage lifecycles.</li>
               </ul>
             </div>
+            <!-- TODO: New architecture image.
             <div className="col-6">
               <span className="image fit">
                 <img src={arch} alt="" />
               </span>
             </div>
+            -->
           </div>
         </section>
 
