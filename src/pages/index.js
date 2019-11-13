@@ -93,7 +93,7 @@ fn main() {
 
         <section id="one" className="main style1">
           <div className="grid-wrapper">
-            <div className="col-6">
+            <div className="col-12">
               <header className="major">
                 <h2>What is Bastion?</h2>
               </header>
@@ -111,11 +111,13 @@ fn main() {
                 <li>Supervision system makes it easy to manage lifecycles.</li>
               </ul>
             </div>
+            {/* TODO: New architecture image.
             <div className="col-6">
               <span className="image fit">
                 <img src={arch} alt="" />
               </span>
             </div>
+            */}
           </div>
         </section>
 
