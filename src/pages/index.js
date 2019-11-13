@@ -93,7 +93,7 @@ fn main() {
 
         <section id="one" className="main style1">
           <div className="grid-wrapper">
-            <div className="col-6">
+            <div className="col-12">
               <header className="major">
                 <h2>What is Bastion?</h2>
               </header>
