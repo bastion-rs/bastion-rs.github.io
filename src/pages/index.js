@@ -141,9 +141,9 @@ fn main() {
             <div className="col-4">
               <h3>Runtime fault-tolerance</h3>
               <p>
-                It makes a good candidate for small scale distributed system
-                code. If you want to smell of Erlang and it's powerful aspects
-                in Rust. That's it!
+                It makes it a good candidate for small scale distributed system
+                code. If you want the smell of Erlang and the powerful aspects
+                of Rust. That's it!
               </p>
             </div>
             <div className="col-4">
