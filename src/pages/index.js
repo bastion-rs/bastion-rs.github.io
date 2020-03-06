@@ -7,8 +7,6 @@ import "prismjs/components/prism-rust";
 
 import Layout from "../components/layout";
 
-import arch from "../assets/images/bastion-arch.png";
-
 class Homepage extends React.Component {
   componentDidMount() {
     Prism.highlightAll();
@@ -111,13 +109,6 @@ fn main() {
                 <li>Supervision system makes it easy to manage lifecycles.</li>
               </ul>
             </div>
-            {/* TODO: New architecture image.
-            <div className="col-6">
-              <span className="image fit">
-                <img src={arch} alt="" />
-              </span>
-            </div>
-            */}
           </div>
         </section>
 
@@ -196,12 +187,17 @@ fn main() {
             </header>
             <p>
               Read the documentation, take a look at the examples, get involved
-              in project
+              in the project
             </p>
             <ul className="actions uniform">
               <li>
-                <a href="https://docs.rs/bastion" className="button">
+                <a href="https://docs.rs/bastion" className="button special">
                   Docs
+                </a>
+              </li>
+              <li>
+                <a href="https://blog.bastion.rs" className="button">
+                  Blog
                 </a>
               </li>
               <li>
