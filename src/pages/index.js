@@ -202,7 +202,7 @@ fn main() {
               </li>
               <li>
                 <a
-                  href="https://github.com/bastion-rs/bastion/tree/master/bastion/examples"
+                  href="https://github.com/bastion-rs/bastion/tree/master/src/bastion/examples"
                   className="button special"
                 >
                   Examples
