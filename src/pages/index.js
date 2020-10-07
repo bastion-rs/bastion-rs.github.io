@@ -13,7 +13,7 @@ class Homepage extends React.Component {
   }
 
   render() {
-    const siteTitle = "Bastion";    
+    const siteTitle = "Bastion";
     const fort_example = `use bastion::prelude::*;
 
 #[fort::root]
