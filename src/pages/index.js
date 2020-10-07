@@ -13,11 +13,15 @@ class Homepage extends React.Component {
   }
 
   render() {
-    const siteTitle = "Bastion";
-    const fort_example = `#[fort::root]
-fn main() {
+    const siteTitle = "Bastion";    
+    const fort_example = `use bastion::prelude::*;
+
+#[fort::root]
+async fn main(_: BastionContext) -> Result<(), ()> {
     println!("Running in Bastion runtime!");
+    Ok(())
 }`;
+    
     const bastion_example = `use bastion::prelude::*;
 use std::sync::atomic::{AtomicBool, Ordering};
 use std::sync::Arc;
