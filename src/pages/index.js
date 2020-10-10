@@ -100,16 +100,25 @@ fn main() {
                 <h2>What is Bastion?</h2>
               </header>
               <p>
-                Bastion is a highly-available, fault-tolerant runtime system with
-                dynamic dispatch oriented lightweight process model.
-                It supplies actor model like concurrency with lightweight process
+                Bastion is a highly-available, fault-tolerant runtime system
+                with dynamic dispatch oriented lightweight process model. It
+                supplies actor model like concurrency with lightweight process
                 implementation and utilize all the system resources efficiently
                 with giving promise of at-most-once message delivery guarantee.
               </p>
               <ul>
-                <li>Message-based communication makes this project a lean mesh of actor system.</li>
-                <li>Runtime fault-tolerance makes it a good candidate for distributed systems.</li>
-                <li>Completely asynchronous runtime with NUMA-aware and cache-affine SMP executor.</li>
+                <li>
+                  Message-based communication makes this project a lean mesh of
+                  actor system.
+                </li>
+                <li>
+                  Runtime fault-tolerance makes it a good candidate for
+                  distributed systems.
+                </li>
+                <li>
+                  Completely asynchronous runtime with NUMA-aware and
+                  cache-affine SMP executor.
+                </li>
                 <li>Supervision system makes it easy to manage lifecycles.</li>
               </ul>
             </div>
