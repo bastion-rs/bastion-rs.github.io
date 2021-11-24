@@ -21,7 +21,7 @@ async fn main(_: BastionContext) -> Result<(), ()> {
     println!("Running in Bastion runtime!");
     Ok(())
 }`;
-    
+
     const bastion_example = `use bastion::prelude::*;
 use std::sync::atomic::{AtomicBool, Ordering};
 use std::sync::Arc;
@@ -209,7 +209,7 @@ fn main() {
                 </a>
               </li>
               <li>
-                <a href="https://blog.bastion.rs" className="button">
+                <a href="https://blog.bastion-rs.com" className="button">
                   Blog
                 </a>
               </li>

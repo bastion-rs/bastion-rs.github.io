@@ -1,4 +1,4 @@
-# bastion.rs website
+# bastion-rs.com website
 
 You can find the website here: https://www.bastion-rs.com
 

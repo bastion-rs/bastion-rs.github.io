@@ -46,7 +46,7 @@ class Header extends React.Component {
             ➖{" "}
             <GitHubButton
               data-icon="octicon-repo-template"
-              href="https://blog.bastion.rs"
+              href="https://blog.bastion-rs.com"
               data-color-scheme="no-preference: dark; light: dark; dark: dark;"
               data-size="large"
               aria-label="Visit the bastion blog"
